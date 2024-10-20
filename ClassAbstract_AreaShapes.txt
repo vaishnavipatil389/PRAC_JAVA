@@ -1,0 +1,39 @@
+abstract class Shape
+ { abstract double area();
+ }
+ class Rectangle extends Shape
+ {
+ double length = 12.5, breadth = 2.5;
+ double area()
+ {
+ return length * breadth;
+ }
+}
+ class Triangle extends Shape
+ {
+ double base = 4.2, height = 6.5;
+ double area()
+ {
+ return 0.5 * base * height;
+ }
+ }
+ class Square extends Shape
+ {
+ double side = 6.5;
+ double area()
+ {
+ return side * side;
+ }
+ }
+ class p4
+ {
+ public static void main(String[] args)
+ {
+ Rectangle r1 = new Rectangle();
+ Triangle t1 = new Triangle();
+ Square s1 = new Square();
+ System.out.println("The area of the rectangle is: " + r1.area());
+ System.out.println("The area of the triangle is: " + t1.area());
+ System.out.println("The area of the square is: " + s1.area());
+ }
+ }

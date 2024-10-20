@@ -1,0 +1,46 @@
+ import java.io.*;
+ interface Area
+ {
+ float compute(float x, float y);
+ }
+ class Rectangle
+ {
+ public float compute(float x, float y)
+ {
+ return (x * y);
+ }
+ }
+ class Triangle
+ {
+ public float compute(float x, float y)
+ {
+ return (x * y / 2);
+ }
+ }
+ class Result extends Rectangle implements Area
+ {
+ public float compute(float x, float y)
+ {
+ return super.compute(x, y);
+ }
+ }
+ class Result1 extends Triangle implements Area
+ {
+ public float compute(float x, float y)
+ {
+ return super.compute(x, y);
+ }
+}
+ public class p4
+ {
+ public static void main(String[] args)
+ {
+ Result rect = new Result();
+ Result1 tri = new Result1();
+ Area a;
+ a =rect;
+ System.out.println("Area of rectangle = " + a.compute(10, 20));
+ a= tri;
+ System.out.println("Area of triangle = " + a.compute(10, 2));
+ }
+ }

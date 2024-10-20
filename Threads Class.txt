@@ -1,0 +1,81 @@
+class A extends Thread {
+ public void run()
+ {
+ try {
+ for (int i = 1; i <= 10; i++) {
+ Thread.sleep(1000); // Correcting sleep method
+ System.out.println("good morning"); // Correcting quotes
+ }
+ } catch (Exception e) {
+ System.out.println(e); // Correcting exception print
+ }
+ }
+}
+ class B extends Thread {
+ public void run()
+ {
+ try {
+ for (int j = 1; j <= 10; j++) {
+ Thread.sleep(2000); // Correcting sleep method
+ System.out.println("hello"); // Correcting quotes
+ }
+ } catch (Exception e) {
+ System.out.println(e); // Correcting exception print
+ }
+ }
+}
+ class C extends Thread {
+ public void run()
+ {
+ try {
+ for (int k = 1; k <= 10; k++) {
+ Thread.sleep(3000); // Correcting sleep method
+ System.out.println("welcome"); // Correcting quotes
+ }
+ } catch (Exception e) {
+ System.out.println(e); // Correcting exception print
+ }
+ }
+}
+
+
+
+ class threaddemo {
+public static void main(String args[]) {
+ A  a1 =new A();
+ B  b1=new B();
+ C  c1 =new C();
+ a1.start(); // Starting thread A
+b1.start(); // Starting thread B
+ c1.start(); // Starting thread C
+ }
+ } 
+
+
+
+*******IF RUNNABLE Threads***********
+class A implements Runnable {
+Follow same code as above of A
+}
+class B implements Runnable {
+Follow same code as above of B
+}
+class C implements Runnable {
+Follow same code as above of C
+}
+ class runnabledemo {
+ public static void main(String args[]) {
+ A a1 =new A(); // Defining classAinstance
+ B b1=new B();
+ C c1 =new C();
+ // Creating thread objects
+ Thread t1 = new Thread(a1);
+ Thread t2 = new Thread(b1);
+ Thread t3 = new Thread(c1);
+ // Starting the threads
+ t1.start();
+ t2.start();
+ t3.start();
+ }
+ }
+

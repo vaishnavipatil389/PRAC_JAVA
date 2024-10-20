@@ -1,0 +1,21 @@
+ class A {
+ int l = 20, b = 10;
+ // Method to calculate area using instance variables
+ int area() {
+ return l * b;
+ }
+ // Method to calculate area using passed arguments (method overloading)
+ int area(int l, int b) {
+ return l * b;
+ }
+ }
+ class OverMethodDemo {
+ public static void main(String args[]) {
+ A  a1=new A();
+ // Calling the first area method without arguments
+ int  r1 = a1.area();
+ System.out.println("The area is: " + r1);
+ // Calling the second area method with arguments (method overloading)
+ int  r2 = a1.area(5, 20);
+ System.out.println("The area is: " + r2);
+ } }

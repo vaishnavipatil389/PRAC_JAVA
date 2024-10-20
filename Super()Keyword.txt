@@ -1,0 +1,30 @@
+ class A {
+ int length, breadth;
+ A()
+ {
+ length = 10;
+ breadth = 20;
+ }
+}
+ class B extends A
+ {
+ int height;
+ B()
+ {
+ super();
+ height = 30;
+ }
+ int volume()
+ {
+ return length * breadth * height;
+ }
+ }
+ public class p4
+ {
+ public static void main(String[] args)
+ {
+ B  b1=new B();
+ int r = b1.volume();
+ System.out.println("The volume is: " + r);
+ }
+ }
