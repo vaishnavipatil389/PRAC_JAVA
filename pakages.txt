@@ -1,0 +1,42 @@
+#PROGRAM1
+package addition;
+public class Addition {
+ public int add(int a, int b) {
+ return a + b;}}
+#PROGRAM2
+package subtraction;
+public class Subtraction {
+ public int subtract(int a, int b) {
+ return a - b;}}
+#PROGRAM3
+import addition.Addition;
+import subtraction.Subtraction;
+import java.util.Scanner;
+public class MainProgram {
+ public static void main(String[] args) {
+ Scanner scanner = new Scanner(System.in);
+ Addition addObj = new Addition();
+ Subtraction subObj = new Subtraction();
+ System.out.println("Choose an operation:");
+ System.out.println("1. Addition");
+ System.out.println("2. Subtraction");
+ System.out.print("Enter your choice: ");
+ int choice = scanner.nextInt();
+ System.out.print("Enter the first number: ");
+ int num1 = scanner.nextInt();
+ System.out.print("Enter the second number: ");
+ int num2 = scanner.nextInt();
+ switch (choice) {
+ case 1:
+ System.out.println("Result: " + addObj.add(num1, num2));
+ break;
+ case 2:
+ System.out.println("Result: " + subObj.subtract(num1, num2));
+ break;
+ default:
+ System.out.println("Invalid choice");
+ break;
+ }
+ scanner.close();
+ }
+}

@@ -1,0 +1,124 @@
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.border.Border;
+
+public class Move extends JFrame implements ActionListener {
+    // Buttons for movement directions
+    JButton up = new JButton("Up");
+    JButton down = new JButton("Down");
+    JButton right = new JButton("Right");
+    JButton left = new JButton("Left");
+    JButton topLeft = new JButton("Top-Left");
+    JButton topRight = new JButton("Top-Right");
+    JButton bottomLeft = new JButton("Bottom-Left");
+    JButton bottomRight = new JButton("Bottom-Right");
+    JButton exit = new JButton("Exit");
+
+    int x = 330; // Initial x-coordinate for rectangle
+    int y = 330; // Initial y-coordinate for rectangle
+    Object s;    // Variable to store the button that was pressed
+
+    // Constructor for the Move class
+    Move() {
+        setSize(800, 800); // Set the window size
+        setTitle("Move Object"); // Set the window title
+        setLayout(new FlowLayout()); // Set layout manager for the frame
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the program exits when the window is closed
+        getContentPane().setBackground(Color.pink); // Set the background color of the content pane
+
+        // Define a border with color for each button
+        Border buttonBorder = BorderFactory.createLineBorder(Color.BLUE, 3);
+
+        // Set button sizes, background, text color, font, and border
+        setButtonProperties(up, buttonBorder);
+        setButtonProperties(down, buttonBorder);
+        setButtonProperties(left, buttonBorder);
+        setButtonProperties(right, buttonBorder);
+        setButtonProperties(topLeft, buttonBorder);
+        setButtonProperties(topRight, buttonBorder);
+        setButtonProperties(bottomLeft, buttonBorder);
+        setButtonProperties(bottomRight, buttonBorder);
+        setButtonProperties(exit, buttonBorder);
+
+        // Add buttons to the frame
+        add(up);
+        add(down);
+        add(right);
+        add(left);
+        add(topLeft);
+        add(topRight);
+        add(bottomLeft);
+        add(bottomRight);
+        add(exit);
+
+        // Add action listeners to each button
+        up.addActionListener(this);
+        down.addActionListener(this);
+        right.addActionListener(this);
+        left.addActionListener(this);
+        topLeft.addActionListener(this);
+        topRight.addActionListener(this);
+        bottomLeft.addActionListener(this);
+        bottomRight.addActionListener(this);
+        exit.addActionListener(this);
+    }
+
+    // Helper function to set button size and border properties
+    private void setButtonProperties(JButton button, Border border) {
+        button.setPreferredSize(new Dimension(150, 50)); // Set preferred size for the button
+        button.setBackground(Color.LIGHT_GRAY); // Set button background color
+        button.setForeground(Color.BLACK); // Set text color
+        button.setFont(new Font("Arial", Font.BOLD, 19)); // Set the font style and size
+
+        // Add a border to the button
+        button.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+    }
+
+    // ActionListener method to handle button clicks
+    public void actionPerformed(ActionEvent ae) {
+        s = ae.getSource(); // Store the source of the action (which button was clicked)
+        repaint(); // Trigger a repaint to update the position of the rectangle
+    }
+
+    // Custom paint method to handle drawing on the JFrame
+    public void paint(Graphics g) {
+        super.paint(g); // Call super.paint to ensure the background is cleared
+
+        // Adjust x and y coordinates based on the button pressed
+        if (s == up) {
+            y -= 20; // Move the rectangle up
+        } else if (s == down) {
+            y += 20; // Move the rectangle down
+        } else if (s == right) {
+            x += 20; // Move the rectangle to the right
+        } else if (s == left) {
+            x -= 20; // Move the rectangle to the left
+        } else if (s == topLeft) {
+            x -= 20; // Move the rectangle to the top-left
+            y -= 20;
+        } else if (s == topRight) {
+            x += 20; // Move the rectangle to the top-right
+            y -= 20;
+        } else if (s == bottomLeft) {
+            x -= 20; // Move the rectangle to the bottom-left
+            y += 20;
+        } else if (s == bottomRight) {
+            x += 20; // Move the rectangle to the bottom-right
+            y += 20;
+        } else if (s == exit) {
+            System.exit(0); // Exit the program when "Exit" is pressed
+        }
+
+        // Draw the rectangle at the updated coordinates
+        g.setColor(Color.RED); // Set the color for the rectangle
+        g.fillRect(x, y, 100, 100); // Draw the rectangle at (x, y) with width 100 and height 100
+    }
+
+    // Main method to start the application
+    public static void main(String args[]) {
+        Move m = new Move(); // Create an instance of the Move class
+        m.setVisible(true); // Make the JFrame visible
+    }
+}
