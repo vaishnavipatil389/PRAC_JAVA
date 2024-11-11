@@ -1,0 +1,115 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class BF1 extends JFrame implements ActionListener {
+    // Declare essential components
+    JTextField name1 = new JTextField();
+    JTextField aadhar1 = new JTextField();
+    JTextField email1 = new JTextField();
+    JPasswordField password1 = new JPasswordField();
+    JPasswordField cpassword1 = new JPasswordField();
+    
+    JButton save = new JButton("SAVE");
+    JButton clear = new JButton("CLEAR");
+    JButton cancel = new JButton("CANCEL");
+
+    BF1() {
+        // Frame settings
+        setSize(600, 400);
+        setTitle("Bank Customer Form");
+        setLayout(null);
+
+        // Title label
+        JLabel title = new JLabel("BANK CUSTOMER FORM", JLabel.CENTER);
+        title.setBounds(150, 20, 300, 40);
+        title.setFont(new Font("Serif", Font.BOLD, 24));
+        add(title);
+
+        // Input fields and labels
+        JLabel nameLabel = new JLabel("Name:");
+        nameLabel.setBounds(50, 80, 100, 30);
+        name1.setBounds(150, 80, 200, 30);
+        add(nameLabel);
+        add(name1);
+
+        JLabel aadharLabel = new JLabel("Aadhar No:");
+        aadharLabel.setBounds(50, 120, 100, 30);
+        aadhar1.setBounds(150, 120, 200, 30);
+        add(aadharLabel);
+        add(aadhar1);
+
+        JLabel emailLabel = new JLabel("Email:");
+        emailLabel.setBounds(50, 160, 100, 30);
+        email1.setBounds(150, 160, 200, 30);
+        add(emailLabel);
+        add(email1);
+
+        JLabel passwordLabel = new JLabel("Password:");
+        passwordLabel.setBounds(50, 200, 100, 30);
+        password1.setBounds(150, 200, 200, 30);
+        add(passwordLabel);
+        add(password1);
+
+        JLabel cpasswordLabel = new JLabel("Confirm Password:");
+        cpasswordLabel.setBounds(50, 240, 120, 30);
+        cpassword1.setBounds(170, 240, 200, 30);
+        add(cpasswordLabel);
+        add(cpassword1);
+
+        // Buttons
+        save.setBounds(100, 300, 100, 30);
+        clear.setBounds(220, 300, 100, 30);
+        cancel.setBounds(340, 300, 100, 30);
+        add(save);
+        add(clear);
+        add(cancel);
+
+        // Add action listeners
+        save.addActionListener(this);
+        clear.addActionListener(this);
+        cancel.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String s1 = name1.getText();
+        String s2 = aadhar1.getText();
+        String s3 = email1.getText();
+        String s4 = new String(password1.getPassword());
+        String s5 = new String(cpassword1.getPassword());
+
+        if (e.getSource() == save) {
+            if (checkInputs() && s4.equals(s5)) {
+                JOptionPane.showMessageDialog(save, "Data Saved Successfully");
+                clearFields();
+            } else {
+                JOptionPane.showMessageDialog(save, "Password mismatch or invalid data.");
+            }
+        } else if (e.getSource() == clear) {
+            clearFields();
+        } else if (e.getSource() == cancel) {
+            System.exit(0);
+        }
+    }
+    // Helper method to check if the essential fields are not empty
+    private boolean checkInputs() {
+        return !name1.getText().isEmpty() && !aadhar1.getText().isEmpty() &&
+               !email1.getText().isEmpty();
+    }
+
+    // Method to clear the form fields
+    private void clearFields() {
+        name1.setText("");
+        aadhar1.setText("");
+        email1.setText("");
+        password1.setText("");
+        cpassword1.setText("");
+    }
+
+    public static void main(String[] args) {
+        BF1 form = new BF1();
+        form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        form.setVisible(true);
+    }
+}
